@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pottery Map | UK Studio Locator</title>
+    <style>
+        body { font-family: 'Helvetica Neue', Arial, sans-serif; background: #fdfaf5; color: #4e342e; text-align: center; padding: 20px; }
+        .box { max-width: 900px; margin: 40px auto; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+        h1 { color: #795548; font-size: 2.5em; margin-bottom: 10px; }
+        input { padding: 12px; width: 250px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; }
+        button { padding: 12px 24px; background: #795548; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        #map-display { margin-top: 30px; height: 500px; border-radius: 12px; overflow: hidden; border: 1px solid #eee; }
+        .linkedin-btn { display: inline-block; margin-top: 30px; padding: 10px 25px; background: #0077b5; color: white; text-decoration: none; border-radius: 25px; font-weight: bold; font-size: 14px; transition: 0.3s; }
+        .linkedin-btn:hover { background: #005582; transform: scale(1.05); }
+        footer { margin-top: 40px; font-size: 0.8em; color: #bcaaa4; border-top: 1px solid #eee; padding-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>🏺 Pottery Map</h1>
+        <p>Explore pottery studios and classes within 5km of your location.</p>
+        <form method="POST">
+            <input type="text" name="postcode" placeholder="e.g. KT1 1RP" required>
+            <button type="submit">Search Now</button>
+        </form>
+        {% if error_msg %}<p style="color: #d32f2f;">{{ error_msg }}</p>{% endif %}
+        <div id="map-display">
+            {% if map_html %}{{ map_html | safe }}{% else %}<p style="line-height: 500px; color: #ccc;">Enter postcode to generate map</p>{% endif %}
+        </div>
+        <a href="https://www.linkedin.com/in/ivanlo82" target="_blank" class="linkedin-btn">
+            Connect with Ivan Lo on LinkedIn
+        </a>
+        <footer>DATA: OPENSTREETMAP | PROJECT BY IVAN LO</footer>
+    </div>
+</body>
